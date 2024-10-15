@@ -1,0 +1,264 @@
+/* esat es la importacion de las fuentes de las fuentes  */
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap');
+
+/* title julius */
+
+* {
+    /* padding: 20px; */
+    color: white;
+    font-weight: bold;
+    box-sizing: border-box; /* Añadir box-sizing para evitar problemas de margen y padding */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+        
+}
+
+.item-top{
+    position: absolute;
+    font-size: 50px;
+}
+
+/* Estilos generales */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Eliminar el desplazamiento */
+    height: 100%; /* Cambiado de 100vh a 100% para evitar problemas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: "Bruno Ace", sans-serif;
+    color: white;
+}
+@media (max-width: 768px) {
+    .text-container h1 {
+        font-size: 3rem; /* Cambiar tamaño a 3rem en pantallas pequeñas */
+    }
+}
+
+/* Fondo de espacio */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('/img/planeta_space.jpg'); /* Asegúrate de tener una imagen de fondo en tu carpeta */
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+/* Contenedor de la animación de aurora */
+.aurora {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0; /* Asegurar que la aurora esté detrás del texto */
+}
+
+/* Capas de colores en movimiento (efecto aurora circular) */
+.layer {
+    position: absolute;
+    top: 50%;  /* Centrar verticalmente */
+    left: 50%; /* Centrar horizontalmente */
+    width: 200%; /* Ampliar el ancho para cubrir toda la pantalla */
+    height: 200%; /* Ampliar la altura para cubrir toda la pantalla */
+    opacity: 0.8; /* Aumentar opacidad para un efecto más suave */
+    border-radius: 50%; /* Hacer que sean círculos */
+    transform: translate(-50%, -50%); /* Ajustar posición para centrar */
+    animation: expand 10s infinite linear;
+}
+
+/* Colores suaves y transiciones */
+.layer1 {
+    background: radial-gradient(circle, rgba(0, 255, 102, 0.361) 0%, rgba(0, 255, 100, 0) 22%); /* Verde */
+    animation-delay: 0s;
+}
+
+.layer2 {
+    background: radial-gradient(circle, rgba(0, 255, 179, 0.475) 0%, rgba(0, 255, 180, 0) 22%); /* Verde azulado */
+    animation-delay: 3s;
+}
+
+.layer3 {
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.8) 0%, rgba(0, 255, 255, 0) 22%); /* Cian */
+    animation-delay: 6s;
+}
+
+.layer4 {
+    background: radial-gradient(circle, rgba(255, 0, 255, 0.628) 0%, rgba(255, 0, 255, 0) 22%); /* Magenta */
+    animation-delay: 9s;
+}
+
+.layer5 {
+    background: radial-gradient(circle, rgba(255, 68, 0, 0.276) 0%, rgba(255, 165, 0, 0) 22%); /* Naranja */
+    animation-delay: 12s;
+}
+
+@keyframes expand {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Animación de partículas neón */
+@keyframes neonParticles {
+    0% {
+        transform: translate(0, -100%);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, 100%);
+        opacity: 0;
+    }
+}
+
+.particle {
+    position: absolute;
+    background-color: #39ff14; /* Color neón */
+    border-radius: 50%;
+    opacity: 0.5; /* Añadir transparencia a las partículas */
+    animation: neonParticles 3s infinite;
+    pointer-events: none;
+    z-index: 1; /* Asegurar que las partículas estén por encima de la aurora */
+}
+
+/* Ajuste de tamaño de partículas */
+.particle-small { width: 5px; height: 5px; }
+.particle-medium { width: 10px; height: 10px; }
+.particle-large { width: 15px; height: 15px; }
+
+/* Animación de texto */
+.text-container {
+    font-family: "Bruno Ace";
+    text-align: center;
+    color: transparent;
+    font-weight: bold;
+    font-size: 4rem;
+    background: linear-gradient(45deg, #474747, #ffffff, #2d2d2d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    opacity: 1; /* Hacer el texto completamente visible */
+    animation: textAppear 3s forwards;
+    z-index: 2; /* Asegurar que el texto esté por encima de la aurora */
+}
+
+.text-container h1,
+.text-container h2 {
+    transition: border 0.3s ease-in-out, text-shadow 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.text-container h1:hover {
+    text-shadow: 0 0 10px #ffffff, 0 0 15px #8de0c399, 0 0 20px #43bcd7;
+    padding: 5px; /* Espaciado alrededor del texto */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.text-container h2:hover {
+    text-shadow: 0 0 10px #372b2b, 0 0 20px #21322c, 0 0 30px #152c31;
+    padding: 5px; /* Espaciado alrededor del texto */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.text-container h2 {
+    margin: 5px 0 0 0; /* Ajustar margen para estar más cerca del título */
+    font-size: 1.5rem; /* Tamaño de fuente del subtítulo */
+    opacity: 0.8; /* Hacer el subtítulo parcialmente visible */
+    animation: textAppear 3s 0.5s forwards;
+    color: rgb(223, 219, 219);
+}
+
+/* Animación de aparición de texto */
+@keyframes textAppear {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* Efecto de transición suave del gradiente */
+.text-container:hover h1,
+.text-container:hover h2 {
+    transition: background 0.5s ease-in-out; /* Transición suave al quitar hover */
+}
+
+/* Secciones de la página */
+section {
+    height: 100vh; /* Cada sección ocupará el 100% de la altura de la ventana */
+    display: flex; /* Flexbox para centrar contenido */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+
+/* Sección de animaciones */
+.animation-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ajusta la altura según sea necesario */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con algo de transparencia */
+    color: white;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+
+.box {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco con transparencia */
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effects */
+.box:hover {
+    transform: scale(1.05); /* Escala al hacer hover */
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.5); /* Sombra al hacer hover */
+}
+
+/* Estilos de texto */
+h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: justify;
+    color: #ddd; /* Color de texto para el párrafo */
+}
+
+/* Subtítulos */
+.subtitle {
+    font-size: 1.2rem;
+    margin-top: 15px;
+    color: #39ff14; /* Color neón para subtítulos */
+}
